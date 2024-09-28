@@ -7,23 +7,31 @@ html, body {
 /* typography */
 
 h1 {
-    color: white;
+
     font-weight: 800;
 }
 
 header a {
-    color: white;
     text-decoration: none;
-    font-size: 1.1em;
 }
 
-
-input {
-    font-size: 1.2em;
-}
-
+header a,
+form i,
+input,
 button {
-    font-size: 1.2em;
+    font-size: 1.1rem;
+}
+
+form i,
+input {
+    color: #A5A5A5;
+}
+
+
+h1,
+header a,
+button {
+    color: #FFFFFF;
 }
 
 /* layout */
@@ -49,22 +57,29 @@ form {
     display: flex;
 }
 
+form i,
 input {
-    /* background: url(images/icon-3.png) no-repeat left;
-    background-size: contain; */
-    flex: 1;
-    min-width: 0;
     background-color: #2E2E2F;
     padding: 0.6em;
-    border: none;
+    
+}
+
+form i {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
-   
+}
+
+input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    padding-left: 0.2em;
+    margin-left: -0.2em;
 }
 
 button {
     background-color: #4B4B4B;
-    padding: 0.6em;
+    padding: 0.6em 1.2em;
     border: none;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
