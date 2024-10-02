@@ -6,6 +6,7 @@
 //     })
 
 const emptyFeed = document.getElementById('empty-feed')
+const mainFeed = document.getElementById('main')
 
 async function loadMovies(searchTerm) {
     const url = `http://www.omdbapi.com/?s=${searchTerm}&apikey=d298a8bb`
@@ -23,4 +24,10 @@ async function loadMovies(searchTerm) {
 
 loadMovies('sfsfsefs')
 
-
+function renderUnableToFind() {
+    mainFeed.innerHTML = `
+        <div class="unable-to-find">
+            <p><strong>Unable to find what you're looking for. Please try another search.</strong></p>
+        </div>
+    `
+}
