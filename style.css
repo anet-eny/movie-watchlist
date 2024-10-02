@@ -151,6 +151,12 @@ main {
     align-items: center; */
 }
 
+@media (min-width: 640px) {
+    main {
+        padding: 0 2em;
+    }
+}
+
 .empty-feed {
     text-align: center;
 }
@@ -168,6 +174,12 @@ main {
     border-bottom: 1px solid #2C2C2C
 }
 
+@media (min-width: 640px) {
+    .movie-item {
+        padding: 2em 0;
+    }
+}
+
 .movie-item:last-child {
     border: none;
 }
@@ -178,6 +190,12 @@ main {
 
 .movie-about {
     margin-left: 0.6em;
+}
+
+@media (min-width: 640px) {
+    .movie-about {
+        margin-left: 1em;
+    }
 }
 
 .movie-header,
