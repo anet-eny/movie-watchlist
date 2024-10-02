@@ -145,9 +145,10 @@ input {
 /* main content */
 main {
     min-height: 80vh;
-    display: flex;
+    padding: 0 1em;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .empty-feed {
@@ -163,7 +164,12 @@ main {
 }
 
 .movie-item {
-    padding: 1em;
+    padding: 1em 0;
+    border-bottom: 1px solid #2C2C2C
+}
+
+.movie-item:last-child {
+    border: none;
 }
 
 .movie-item img {
