@@ -12,4 +12,4 @@ async function loadMovies(searchTerm) {
     console.log(data)
 }
 
-loadMovies('star wars')
+// loadMovies('star wars')

@@ -27,11 +27,11 @@ button,
     font-size: 1.1rem;
 }
 
-.movie p {
+.movie-about p {
     font-size: 0.7rem;
 }
 
-.movie p.movie-plot {
+.movie-about p.movie-plot {
     font-size: 0.8rem;
 }
 
@@ -142,4 +142,19 @@ main {
 
 .empty-feed {
     text-align: center;
+}
+
+.movie-item,
+.movie-header,
+.movie-info {
+    display: flex;
+    align-items: center;
+}
+
+.movie-item {
+    padding: 1em;
+}
+
+.movie-item img {
+    max-width: 25%;
 }
