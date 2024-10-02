@@ -43,7 +43,8 @@ input,
 
 form i,
 input,
-.movie-plot {
+.movie-plot,
+.unable-to-find {
     color: #A5A5A5;
 }
 
@@ -146,9 +147,9 @@ input {
 main {
     min-height: 80vh;
     padding: 0 1em;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
 }
 
 @media (min-width: 640px) {
@@ -157,7 +158,8 @@ main {
     }
 }
 
-.empty-feed {
+.empty-feed,
+.unable-to-find {
     text-align: center;
 }
 
