@@ -7,6 +7,15 @@
 
 const emptyFeed = document.getElementById('empty-feed')
 const mainFeed = document.getElementById('main')
+const input = document.getElementById('input')
+const form = document.getElementById('form')
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    loadMovies(input.value)
+    input.value = ""
+})
 
 async function loadMovies(searchTerm) {
     const url = `http://www.omdbapi.com/?s=${searchTerm}&apikey=d298a8bb`
@@ -22,7 +31,7 @@ async function loadMovies(searchTerm) {
     }
 }
 
-loadMovies('blade runner')
+
 
 function renderUnableToFind() {
     mainFeed.innerHTML = `
