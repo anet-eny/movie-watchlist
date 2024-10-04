@@ -229,6 +229,10 @@ main.movies-active {
     margin: 0;
 }
 
+.movie-header p {
+    white-space: nowrap;
+}
+
 .watchlist-btn {
     gap: 0.3em;
     background-color: #0E0E0E;
