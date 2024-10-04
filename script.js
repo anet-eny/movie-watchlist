@@ -12,10 +12,9 @@ async function loadMovies(searchTerm) {
     const url = `http://www.omdbapi.com/?s=${searchTerm}&apikey=d298a8bb`
     const res = await fetch(`${url}`)
     const data = await res.json()
-    if (data.Response) {
+    if (data.Search) {
         emptyFeed.classList.add('hidden')
-        // renderMovies(data.Search)
-        console.log(data.Search[0])
+        getMoviesDetails(data.Search)
     } else {
         console.log("not found")
         emptyFeed.classList.add('hidden')
@@ -23,7 +22,7 @@ async function loadMovies(searchTerm) {
     }
 }
 
-loadMovies('Spiderman')
+loadMovies('blade runner')
 
 function renderUnableToFind() {
     mainFeed.innerHTML = `
@@ -33,12 +32,24 @@ function renderUnableToFind() {
     `
 }
 
-function renderMovies(movies) {
+async function getMoviesDetails(movies) {
+    let moviesDetails = []
+    const moviePromises = movies.map(async movie => {
+        const result = await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=d298a8bb`)
+        const movieDetails = await result.json()
+        moviesDetails.push(movieDetails)
+    })
+    await Promise.all(moviePromises)
+
+    renderMovies(moviesDetails)
+}
+
+function renderMovies(moviesWithDetails) {
     let listHtml = ""
-    for (let movie of movies) {
+    for (let movie of moviesWithDetails) {
         listHtml += `
             <div class="movie-item">
-                <img src="${movie.Poster}" alt="poster">
+                <img src="${(movie.Poster !== "N/A") ? movie.Poster : "images/image_not_found.jpg"}" alt="poster">
                 <div class="movie-about">
                     <div class="movie-header">
                         <h2>${movie.Title}</h2>
