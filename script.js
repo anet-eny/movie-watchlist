@@ -23,10 +23,12 @@ async function loadMovies(searchTerm) {
     const data = await res.json()
     if (data.Search) {
         emptyFeed.classList.add('hidden')
+        mainFeed.classList.add('movies-active')
         getMoviesDetails(data.Search)
     } else {
         console.log("not found")
         emptyFeed.classList.add('hidden')
+        mainFeed.classList.remove('movies-active')
         renderUnableToFind()
     }
 }

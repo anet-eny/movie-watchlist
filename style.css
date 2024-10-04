@@ -147,9 +147,15 @@ input {
 main {
     min-height: 80vh;
     padding: 0 1em;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
+}
+
+main.movies-active {
+    display: block;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 @media (min-width: 640px) {
