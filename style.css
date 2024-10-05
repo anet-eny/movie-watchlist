@@ -21,7 +21,7 @@ h2 {
 }
 
 header a,
-.unable-to-find a {
+.empty-watchlist a {
     text-decoration: none;
 }
 
@@ -45,14 +45,15 @@ input,
 form i,
 input,
 .movie-plot,
-.unable-to-find {
+.unable-to-find,
+.empty-watchlist {
     color: #A5A5A5;
 }
 
 header a,
 .search-btn,
 .watchlist-btn,
-.unable-to-find a {
+.empty-watchlist a {
     color: #FFFFFF;
 }
 
@@ -179,7 +180,8 @@ main.movies-active {
 }
 
 .empty-feed,
-.unable-to-find {
+.unable-to-find,
+.empty-watchlist {
     text-align: center;
 }
 
