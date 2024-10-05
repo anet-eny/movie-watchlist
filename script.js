@@ -80,7 +80,7 @@ function renderMovies(moviesWithDetails, isWatchlist = false) {
                     <div class="movie-info">
                         <p>${movie.Runtime}</p>
                         <p>${movie.Genre}</p>
-                        <button id="watchlist-btn" class="watchlist-btn" data-id="${movie.imdbID}"><i class="fa-solid fa-circle-plus"></i> Watchlist</p></button>
+                        <button id="watchlist-btn" class="watchlist-btn" data-id="${movie.imdbID}"><i class="fa-solid ${(isWatchlist) ? 'fa-circle-minus' : 'fa-circle-plus'}"></i> ${(isWatchlist) ? 'Remove' : 'Watchlist'}</p></button>
                     </div>
                     <p class="movie-plot">${movie.Plot}</p>
                 </div>
@@ -91,7 +91,12 @@ function renderMovies(moviesWithDetails, isWatchlist = false) {
     targetFeed.innerHTML = listHtml
     
     document.querySelectorAll('.watchlist-btn').forEach(button => {
-        button.addEventListener('click', addToWatchlist)
+        if (isWatchlist) {
+            button.addEventListener('click', removeFromWatchlist)
+        } else {
+            button.addEventListener('click', addToWatchlist)
+        }
+        
     })
 }
 
@@ -106,6 +111,10 @@ function addToWatchlist(e) {
     } else {
         console.log(`${movieID} is already in the watchlist`)
     }
+}
+
+function removeFromWatchlist(e) {
+    console.log("remove")
 }
 
 async function handleWatchlist() {
