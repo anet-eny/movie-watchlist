@@ -4,11 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Watchlist</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/1b56dbe12c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+            <h1>My Watchlist</h1>
+            <a href="index.html">Search for movies</a>
+        </header>
+
+        <main id="main">
+            <div class="unable-to-find">
+                <p><strong>Your watchlist is looking a little empty...</strong></p>
+                <button id="watchlist-btn" class="watchlist-btn center"><i class="fa-solid fa-circle-plus"></i> Let's add some movies!</p></button>
+            </div>
+                 
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
-</html>
+</html>  

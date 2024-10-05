@@ -240,6 +240,10 @@ main.movies-active {
     border: none;
 }
 
+.center {
+    margin: auto;
+}
+
 /* utility */
 .hidden {
     display: none;

@@ -7,14 +7,18 @@
 
 const emptyFeed = document.getElementById('empty-feed')
 const mainFeed = document.getElementById('main')
-const input = document.getElementById('input')
-const form = document.getElementById('form')
 
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById('input')
+    const form = document.getElementById('form')
 
-form.addEventListener("submit", (e) => {
-    e.preventDefault()
-    loadMovies(input.value)
-    input.value = ""
+    if(form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault()
+            loadMovies(input.value)
+            input.value = ""
+        })
+    }
 })
 
 async function loadMovies(searchTerm) {
