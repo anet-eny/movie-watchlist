@@ -49,16 +49,21 @@ function renderUnableToFind() {
     `
 }
 
-async function getMoviesDetails(movies) {
+async function getMoviesDetails(movies, isWatchlist = false) {
     let moviesDetails = []
     const moviePromises = movies.map(async movie => {
-        const result = await fetch(`http://www.omdbapi.com/?i=${movie.imdbID}&apikey=d298a8bb`)
+        let id
+        if (isWatchlist) {
+            id = movie
+        } else {
+            id = movie.imdbID
+        }
+        const result = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=d298a8bb`)
         const movieDetails = await result.json()
         moviesDetails.push(movieDetails)
     })
     await Promise.all(moviePromises)
-    
-    renderMovies(moviesDetails)
+    renderMovies(moviesDetails, isWatchlist)
 }
 
 function renderMovies(moviesWithDetails, isWatchlist = false) {
@@ -103,13 +108,13 @@ function addToWatchlist(e) {
     }
 }
 
-function handleWatchlist() {
+async function handleWatchlist() {
     let watchlist = JSON.parse(localStorage.getItem('watchlist'))
 
     if(watchlist.length > 0) {
         emptyWatchlist.classList.add('hidden')
         watchlistFeed.classList.add('movies-active')
-        console.log(watchlist)
+        await getMoviesDetails(watchlist, true)
     } else {
         emptyWatchlist.classList.remove('hidden')
         watchlistFeed.classList.remove('movies-active')
