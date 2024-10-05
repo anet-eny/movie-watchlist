@@ -20,7 +20,8 @@ h2 {
     font-size: 1.2rem;
 }
 
-header a {
+header a,
+.unable-to-find a {
     text-decoration: none;
 }
 
@@ -50,7 +51,8 @@ input,
 
 header a,
 .search-btn,
-.watchlist-btn {
+.watchlist-btn,
+.unable-to-find a {
     color: #FFFFFF;
 }
 
@@ -240,10 +242,6 @@ main.movies-active {
     padding: 0;
     border: none;
     cursor: pointer;
-}
-
-.center {
-    margin: auto;
 }
 
 /* utility */
