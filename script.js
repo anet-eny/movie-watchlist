@@ -7,6 +7,8 @@
 
 const emptyFeed = document.getElementById('empty-feed')
 const mainFeed = document.getElementById('main')
+const emptyWatchlist = document.getElementById('empty-watchlist')
+const watchlistFeed = document.getElementById('main-watchlist')
 
 document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById('input')
@@ -55,11 +57,11 @@ async function getMoviesDetails(movies) {
         moviesDetails.push(movieDetails)
     })
     await Promise.all(moviePromises)
-
+    
     renderMovies(moviesDetails)
 }
 
-function renderMovies(moviesWithDetails) {
+function renderMovies(moviesWithDetails, isWatchlist = false) {
     let listHtml = ""
     for (let movie of moviesWithDetails) {
         listHtml += `
@@ -80,13 +82,14 @@ function renderMovies(moviesWithDetails) {
             </div> 
         `
     }
-    mainFeed.innerHTML = listHtml
+    const targetFeed = isWatchlist ? watchlistFeed : mainFeed
+    targetFeed.innerHTML = listHtml
+    
     document.querySelectorAll('.watchlist-btn').forEach(button => {
         button.addEventListener('click', addToWatchlist)
     })
 }
 
-// function to handle adding movies to the watchlist
 function addToWatchlist(e) {
     const movieID = e.target.getAttribute('data-id')
     let watchlist = JSON.parse(localStorage.getItem('watchlist')) || []
@@ -99,3 +102,22 @@ function addToWatchlist(e) {
         console.log(`${movieID} is already in the watchlist`)
     }
 }
+
+function handleWatchlist() {
+    let watchlist = JSON.parse(localStorage.getItem('watchlist'))
+
+    if(watchlist.length > 0) {
+        emptyWatchlist.classList.add('hidden')
+        watchlistFeed.classList.add('movies-active')
+        console.log(watchlist)
+    } else {
+        emptyWatchlist.classList.remove('hidden')
+        watchlistFeed.classList.remove('movies-active')
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    if(window.location.pathname.includes('watchlist.html')) {
+        handleWatchlist()
+    }
+})
