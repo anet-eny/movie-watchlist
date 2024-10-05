@@ -73,7 +73,7 @@ function renderMovies(moviesWithDetails) {
                     <div class="movie-info">
                         <p>${movie.Runtime}</p>
                         <p>${movie.Genre}</p>
-                        <button id="watchlist-btn" class="watchlist-btn"><i class="fa-solid fa-circle-plus"></i> Watchlist</p></button>
+                        <button id="watchlist-btn" class="watchlist-btn" data-id="${movie.imdbID}"><i class="fa-solid fa-circle-plus"></i> Watchlist</p></button>
                     </div>
                     <p class="movie-plot">${movie.Plot}</p>
                 </div>
@@ -81,5 +81,21 @@ function renderMovies(moviesWithDetails) {
         `
     }
     mainFeed.innerHTML = listHtml
+    document.querySelectorAll('.watchlist-btn').forEach(button => {
+        button.addEventListener('click', addToWatchlist)
+    })
 }
 
+// function to handle adding movies to the watchlist
+function addToWatchlist(e) {
+    const movieID = e.target.getAttribute('data-id')
+    let watchlist = JSON.parse(localStorage.getItem('watchlist')) || []
+
+    if(!watchlist.includes(movieID)) {
+        watchlist.push(movieID)
+        localStorage.setItem('watchlist', JSON.stringify(watchlist))
+        console.log(`${movieID} added to watchlist`)
+    } else {
+        console.log(`${movieID} is already in the watchlist`)
+    }
+}
