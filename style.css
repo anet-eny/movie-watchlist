@@ -152,6 +152,7 @@ input:focus {
     border: none;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
+    cursor: pointer;
 }
 
 /* main content */
@@ -238,6 +239,7 @@ main.movies-active {
     background-color: #0E0E0E;
     padding: 0;
     border: none;
+    cursor: pointer;
 }
 
 .center {
