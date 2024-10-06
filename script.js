@@ -39,8 +39,6 @@ async function loadMovies(searchTerm) {
     }
 }
 
-
-
 function renderUnableToFind() {
     mainFeed.innerHTML = `
         <div class="unable-to-find">
@@ -96,7 +94,6 @@ function renderMovies(moviesWithDetails, isWatchlist = false) {
         } else {
             button.addEventListener('click', addToWatchlist)
         }
-        
     })
 }
 
@@ -114,7 +111,15 @@ function addToWatchlist(e) {
 }
 
 function removeFromWatchlist(e) {
-    console.log("remove")
+    const movieID = e.target.getAttribute('data-id')
+    let watchlist = JSON.parse(localStorage.getItem('watchlist'))
+
+    if(watchlist.includes(movieID)) {
+        const index = watchlist.indexOf(movieID)
+        watchlist.splice(index, 1)
+        localStorage.setItem('watchlist', JSON.stringify(watchlist))
+    }
+    handleWatchlist()
 }
 
 async function handleWatchlist() {
@@ -127,6 +132,12 @@ async function handleWatchlist() {
     } else {
         emptyWatchlist.classList.remove('hidden')
         watchlistFeed.classList.remove('movies-active')
+        watchlistFeed.innerHTML = `
+            <div id="empty-watchlist" class="empty-watchlist">
+                <p><strong>Your watchlist is looking a little empty...</strong></p>
+                <a href="index.html"><i class="fa-solid fa-circle-plus"></i> Let's add some movies!</a>
+            </div>
+        `
     }
 }
 
