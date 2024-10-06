@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Fetches movie search results based on a search term
 async function loadMovies(searchTerm) {
-    const url = `http://www.omdbapi.com/?s=${searchTerm}&apikey=d298a8bb`
+    const url = `https://www.omdbapi.com/?s=${searchTerm}&apikey=d298a8bb`
     const res = await fetch(`${url}`)
     const data = await res.json()
     if (data.Search) {
@@ -53,7 +53,7 @@ async function getMoviesDetails(movies, isWatchlist = false) {
         } else {
             id = movie.imdbID
         }
-        const result = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=d298a8bb`)
+        const result = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=d298a8bb`)
         const movieDetails = await result.json()
         moviesDetails.push(movieDetails)
     })
@@ -139,7 +139,7 @@ async function handleWatchlist() {
     }
 }
 
-// Executes when the page is loaded and checks if the user is on watchlist.html
+// Executes when the page is loaded and checks if the user is on watchlist.html 
 window.addEventListener('DOMContentLoaded', () => {
     if(window.location.pathname.includes('watchlist.html')) {
         handleWatchlist()
