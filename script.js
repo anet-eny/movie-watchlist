@@ -1,10 +1,4 @@
 
-// fetch("http://www.omdbapi.com/?s=spiderman&apikey=d298a8bb")
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data)
-//     })
-
 const emptyFeed = document.getElementById('empty-feed')
 const mainFeed = document.getElementById('main')
 const emptyWatchlist = document.getElementById('empty-watchlist')
@@ -34,7 +28,6 @@ async function loadMovies(searchTerm) {
         mainFeed.classList.add('movies-active')
         getMoviesDetails(data.Search)
     } else {
-        console.log("not found")
         emptyFeed.classList.add('hidden')
         mainFeed.classList.remove('movies-active')
         renderUnableToFind()
@@ -110,9 +103,6 @@ function addToWatchlist(e) {
     if(!watchlist.includes(movieID)) {
         watchlist.push(movieID)
         localStorage.setItem('watchlist', JSON.stringify(watchlist))
-        console.log(`${movieID} added to watchlist`)
-    } else {
-        console.log(`${movieID} is already in the watchlist`)
     }
 }
 
