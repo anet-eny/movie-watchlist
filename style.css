@@ -42,6 +42,23 @@ input,
     font-size: 0.8rem;
 }
 
+@media (min-width: 640px) {
+    header a,
+    form i,
+    input,
+    .search-btn,
+    .empty-feed p {
+        font-size: 1.3rem;
+    }
+    .movie-about p,
+    .watchlist-btn {
+        font-size: 0.9rem;
+    }
+    .movie-about p.movie-plot {
+        font-size: 1rem;
+    }
+}
+
 form i,
 input,
 .movie-plot,
@@ -79,13 +96,13 @@ header a,
 
 @media (min-width: 640px) {
     .container {
-        width: 60%;
+        width: 70%;
         margin: 2em auto;
         box-shadow: 1px 1px 30px 2px #313131;
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1040px) {
     .container {
         width: 45%;
     }
