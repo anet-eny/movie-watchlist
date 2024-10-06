@@ -10,6 +10,7 @@ const mainFeed = document.getElementById('main')
 const emptyWatchlist = document.getElementById('empty-watchlist')
 const watchlistFeed = document.getElementById('main-watchlist')
 
+// Runs when the DOM is fully loaded and initializes the form event listener (checks if the form is present)
 document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById('input')
     const form = document.getElementById('form')
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
+// Fetches movie search results based on a search term
 async function loadMovies(searchTerm) {
     const url = `http://www.omdbapi.com/?s=${searchTerm}&apikey=d298a8bb`
     const res = await fetch(`${url}`)
@@ -39,6 +41,7 @@ async function loadMovies(searchTerm) {
     }
 }
 
+// Renders a message when no search results are found
 function renderUnableToFind() {
     mainFeed.innerHTML = `
         <div class="unable-to-find">
@@ -47,6 +50,7 @@ function renderUnableToFind() {
     `
 }
 
+// Fetches detailed information for each movie using its ID
 async function getMoviesDetails(movies, isWatchlist = false) {
     let moviesDetails = []
     const moviePromises = movies.map(async movie => {
@@ -64,6 +68,7 @@ async function getMoviesDetails(movies, isWatchlist = false) {
     renderMovies(moviesDetails, isWatchlist)
 }
 
+// Renders the list of movies on the page(for search or watchlist)
 function renderMovies(moviesWithDetails, isWatchlist = false) {
     let listHtml = ""
     for (let movie of moviesWithDetails) {
@@ -97,6 +102,7 @@ function renderMovies(moviesWithDetails, isWatchlist = false) {
     })
 }
 
+// Adds a movie to the watchlist and stores it in local storage
 function addToWatchlist(e) {
     const movieID = e.target.getAttribute('data-id')
     let watchlist = JSON.parse(localStorage.getItem('watchlist')) || []
@@ -110,6 +116,7 @@ function addToWatchlist(e) {
     }
 }
 
+// Removes a movie from the watchlist and updates local storage
 function removeFromWatchlist(e) {
     const movieID = e.target.getAttribute('data-id')
     let watchlist = JSON.parse(localStorage.getItem('watchlist'))
@@ -122,6 +129,7 @@ function removeFromWatchlist(e) {
     handleWatchlist()
 }
 
+// Handles displaying the watchlist, showing/hiding the correct UI elements
 async function handleWatchlist() {
     let watchlist = JSON.parse(localStorage.getItem('watchlist'))
 
@@ -141,6 +149,7 @@ async function handleWatchlist() {
     }
 }
 
+// Executes when the page is loaded and checks if the user is on watchlist.html
 window.addEventListener('DOMContentLoaded', () => {
     if(window.location.pathname.includes('watchlist.html')) {
         handleWatchlist()
